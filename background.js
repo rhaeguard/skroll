@@ -1,3 +1,14 @@
+function triggerScroll(tabId) {
+    chrome.tabs.sendMessage(tabId, { command: "start-scroll" }, {});
+}
+
 chrome.action.onClicked.addListener(({ id }) => {
-    chrome.tabs.sendMessage(id, { command: "start-scroll" }, {});
+    triggerScroll(id);
+});
+
+chrome.commands.onCommand.addListener((command, tab) => {
+    console.log(command)
+    if (command === "scroll") {
+        triggerScroll(tab.id);
+    }
 });

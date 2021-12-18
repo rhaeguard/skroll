@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "version": "0.0.1",
+    "name": "skroll",
+    "author": "Mensur Owary",
+    "description": "Google Chrome extension that allows you to slowly scroll till the end of the page",
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["activeTab", "scripting", "tabs"],
+    "content_scripts": [
+        {
+            "matches": ["https://*/*", "http://*/*"],
+            "js": ["content-script.js"]
+        }
+    ],
+    "action": {
+        "default_icons": {
+            "48": "icons/48.png",
+            "128": "icons/128.png"
+        },
+        "default_title": "Scroll!"
+    },
+    "icons": {
+        "48": "icons/48.png",
+        "128": "icons/128.png"
+    }
+}
